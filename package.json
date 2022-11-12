@@ -24,5 +24,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "gatsby-plugin-root-import": "^2.0.8"
   }
 }
