@@ -52,7 +52,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Laminacja rzęs</p>
+                  <p>Przedłużanie rzęs</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -65,7 +65,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Lifting rzęs</p>
+                  <p>Laminacja rzęs</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -78,7 +78,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Brwi</p>
+                  <p>Stylizacja brwi</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
