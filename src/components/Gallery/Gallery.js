@@ -52,7 +52,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Przedłużanie rzęs</p>
+                  <p>przedłużanie rzęs</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -65,7 +65,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Laminacja rzęs</p>
+                  <p>laminacja rzęs</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -78,7 +78,7 @@ const Gallery = () => {
             return (
               <GalleryItem>
                 <GalleryTitleContainer>
-                  <p>Stylizacja brwi</p>
+                  <p>stylizacja brwi</p>
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -121,8 +121,9 @@ const GalleryItem = styled.div`
         color: white;
         font-size: 30px;
         line-height: 1rem;
-        font-weight: bold;
-        opacity: 90%;
+        opacity: 100%;
+        font-family: ${({ theme }) => theme.font.family.switzer};
+        letter-spacing: 2px;
       }
     }
   }
@@ -143,13 +144,11 @@ const SingleImage = styled.img`
 
 const GalleryTitleContainer = styled.div`
   position: absolute;
-  font-family: ${({ theme }) => theme.font.family.poppins};
-  font-weight: bold;
+  font-family: ${({ theme }) => theme.font.family.switzer};
   width: 100%;
   text-align: center;
   white-space: nowrap;
   z-index: 1;
-  color: black;
   opacity: 0;
   top: -10%;
   background-color: rgba(178, 1, 116, 0.4);

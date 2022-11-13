@@ -2,17 +2,20 @@ import * as React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
+import Navigation from "../components/Navigation/Navigation";
 
 const IndexPage = ({ data }) => {
   return (
     <>
-      <HeroImage imageSource={data.hero.publicURL} />
-      <TitleContainer>
-        <HeroTitle>Cześć piękna</HeroTitle>
-        <HeroSubtitle>
-          <span>zapraszam do</span> Eye Candy
-        </HeroSubtitle>
-      </TitleContainer>
+      <Navigation />
+      <HeroImage imageSource={data.hero.publicURL}>
+        <TitleContainer>
+          <HeroTitle>Cześć piękna</HeroTitle>
+          <HeroSubtitle>
+            <span>zapraszam do</span> Eye Candy
+          </HeroSubtitle>
+        </TitleContainer>
+      </HeroImage>
       <ContentWrapper>
         <Gallery />
       </ContentWrapper>
@@ -29,14 +32,11 @@ export const query = graphql`
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 50px;
-  padding: 0 20px;
-
-  ${({ theme }) => theme.mq.desktop} {
-    max-width: 1920px;
-    margin: 100px auto;
-    padding: 0 100px;
-  }
+  max-width: 1920px;
+  margin: 0 auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  width: 100vw;
 `;
 
 const HeroImage = styled.div`
@@ -51,7 +51,6 @@ const HeroImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 30%;
-  filter: grayscale();
   padding: 35px;
 `;
 
@@ -61,6 +60,8 @@ const TitleContainer = styled.div`
   top: 42%;
   left: 4%;
   text-align: center;
+  filter: none;
+  z-index: 1;
 `;
 
 const HeroTitle = styled.h1`
@@ -68,6 +69,7 @@ const HeroTitle = styled.h1`
   font-family: ${({ theme }) => theme.font.family.caveat};
   font-weight: bold;
   font-style: italic;
+  color: ${({ theme }) => theme.color.darkPink};
   margin: 0;
 `;
 
@@ -80,7 +82,7 @@ const HeroSubtitle = styled.h2`
   span {
     font-family: ${({ theme }) => theme.font.family.caveat};
     font-size: 40px;
-    color: black;
+    color: ${({ theme }) => theme.color.darkPink};
   }
 `;
 export default IndexPage;

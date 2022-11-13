@@ -3,6 +3,8 @@ import { css } from "styled-components";
 export const theme = {
   color: {
     pink: "#FF74B1",
+    darkPink: "#4C0033",
+    lightPink: "#E80F88",
   },
   size: {
     desktopHeroHeight: "800px",
@@ -23,6 +25,7 @@ export const theme = {
     family: {
       poppins: '"Poppins", sans-serif',
       caveat: '"Caveat", cursive',
+      switzer: '"Switzer", sans-serif',
     },
   },
   mq: {
