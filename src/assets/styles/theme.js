@@ -5,6 +5,9 @@ export const theme = {
     pink: "#FF74B1",
     darkPink: "#4C0033",
     lightPink: "#E80F88",
+    camel: "#C2a08a",
+    light: "#e4dcd1"
+
   },
   size: {
     desktopHeroHeight: "800px",

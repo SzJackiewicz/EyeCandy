@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import Navigation from "../components/Navigation/Navigation";
+import Footer from "../components/Footer/Footer";
 
 const IndexPage = ({ data }) => {
   return (
@@ -10,14 +11,13 @@ const IndexPage = ({ data }) => {
       <Navigation />
       <HeroImage imageSource={data.hero.publicURL}>
         <TitleContainer>
-          <HeroTitle>Cześć piękna</HeroTitle>
-          <HeroSubtitle>
-            <span>zapraszam do</span> Eye Candy
-          </HeroSubtitle>
+          <HeroTitle>Salon kosmetyczny</HeroTitle>
+          <HeroSubtitle><span>E</span>ye <span>C</span>andy</HeroSubtitle>
         </TitleContainer>
       </HeroImage>
       <ContentWrapper>
         <Gallery />
+        <Footer />
       </ContentWrapper>
     </>
   );
@@ -52,37 +52,48 @@ const HeroImage = styled.div`
   background-size: cover;
   background-position: 30%;
   padding: 35px;
+  background-color: ${({ theme }) => theme.color.camel};
+  background-blend-mode: overlay;
 `;
 
 const TitleContainer = styled.div`
   position: absolute;
   width: 480px;
   top: 42%;
-  left: 4%;
+  left: 5%;
   text-align: center;
   filter: none;
   z-index: 1;
+  transform: translateY(10%);
+  animation: slide-in-anim 1.5s ease-out forwards;
+
+  @keyframes slide-in-anim {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(40%);
+    }
+  }
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 90px;
-  font-family: ${({ theme }) => theme.font.family.caveat};
-  font-weight: bold;
-  font-style: italic;
+  font-size: 50px;
+  font-family: ${({ theme }) => theme.font.family.switzer};
   color: ${({ theme }) => theme.color.darkPink};
+  font-weight: 300;
   margin: 0;
 `;
 
 const HeroSubtitle = styled.h2`
-  font-family: ${({ theme }) => theme.font.family.caveat};
-  color: #e80f88;
-  font-weight: bold;
-  font-style: italic;
+  font-family: ${({ theme }) => theme.font.family.switzer};
   font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: ${({ theme }) => theme.color.darkPink};
   span {
-    font-family: ${({ theme }) => theme.font.family.caveat};
-    font-size: 40px;
-    color: ${({ theme }) => theme.color.darkPink};
+    color: ${({ theme }) => theme.color.lightPink};
   }
 `;
 export default IndexPage;

@@ -42,8 +42,17 @@ const query = graphql`
 
 const Gallery = () => {
   const images = useStaticQuery(query);
+  // const observer = new IntersectionObserver((entries) => {
+  //   entries.forEach((entry) => {
+  //     console.log(entry);
+  //     if (entry.isIntersecting) {
+  //       setIsHidded(false);
+  //     } else {
+  //       setIsHidded(true);
+  //     }
+  //   });
+  // });
 
-  console.log(images);
   return (
     <GallerySection>
       <GalleryGridOne>
@@ -118,7 +127,7 @@ const GalleryItem = styled.div`
       top: 0;
       p {
         z-index: 2;
-        color: white;
+        color: ${({ theme }) => theme.color.light};
         font-size: 30px;
         line-height: 1rem;
         opacity: 100%;
@@ -151,7 +160,6 @@ const GalleryTitleContainer = styled.div`
   z-index: 1;
   opacity: 0;
   top: -10%;
-  background-color: rgba(178, 1, 116, 0.4);
-`;
+  background-color: ${({ theme }) => theme.color.camel};`;
 
 export default Gallery;
