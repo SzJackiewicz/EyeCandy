@@ -1,6 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React, {useRef} from "react";
+import styled, {keyframes} from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
+import { useInView } from "framer-motion";
 
 const query = graphql`
   query MyQuery {
@@ -42,15 +43,35 @@ const query = graphql`
 
 const Gallery = () => {
   const images = useStaticQuery(query);
+    const ref = useRef(null)
+    const isInView = useInView(ref, {once: true})
+    const refTwo = useRef(null)
+    const isInViewTwo = useInView(refTwo, {once: true})
+    const refThree = useRef(null)
+    const isInViewThree = useInView(refThree, {once: true})
 
-  return (
-    <GallerySection>
-        <GalleryTitle>Lorem ipsum dolor sit amet</GalleryTitle>
-      <GalleryGridOne>
+
+    return (
+    <GallerySection >
+        <GalleryTitle
+            ref={ref}
+            style={{
+              transform: isInView ? "none" : "translateY(200px)",
+              opacity: isInView ? 1 : 0,
+              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+            }}
+        >Lorem ipsum dolor sit amet</GalleryTitle>
+      <GalleryGridOne ref={ref}>
         {images &&
           images.one.edges.map((image) => {
             return (
-              <GalleryItem>
+              <GalleryItem
+                  style={{
+                      transform: isInView ? "none" : "translateY(200px)",
+                      opacity: isInView ? 1 : 0,
+                      transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                  }}
+              >
                 <GalleryTitleContainer>
                   <p>przedłużanie rzęs</p>
                 </GalleryTitleContainer>
@@ -59,11 +80,17 @@ const Gallery = () => {
             );
           })}
       </GalleryGridOne>
-      <GalleryGridTwo>
+      <GalleryGridTwo ref={refTwo}>
         {images &&
           images.two.edges.map((image) => {
             return (
-              <GalleryItem>
+              <GalleryItem
+                  style={{
+                      transform: isInViewTwo ? "none" : "translateY(200px)",
+                      opacity: isInViewTwo ? 1 : 0,
+                      transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                  }}
+              >
                 <GalleryTitleContainer>
                   <p>laminacja rzęs</p>
                 </GalleryTitleContainer>
@@ -72,11 +99,17 @@ const Gallery = () => {
             );
           })}
       </GalleryGridTwo>
-      <GalleryGridThree>
+      <GalleryGridThree ref={refThree}>
         {images &&
           images.three.edges.map((image) => {
             return (
-              <GalleryItem>
+              <GalleryItem
+                  style={{
+                    transform: isInViewThree ? "none" : "translateY(200px)",
+                    opacity: isInViewThree ? 1 : 0,
+                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
+                  }}
+              >
                 <GalleryTitleContainer>
                   <p>stylizacja brwi</p>
                 </GalleryTitleContainer>
@@ -88,6 +121,15 @@ const Gallery = () => {
     </GallerySection>
   );
 };
+
+const appearAnimation = keyframes`
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+`;
 
 const GallerySection = styled.section`
   display: flex;
@@ -112,6 +154,9 @@ const GalleryTitle = styled.h2`
     position: absolute;
     z-index: -1;
     bottom: -21%;
+    transform-origin: 0 50%;
+    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97) forwards;
+    animation: ${appearAnimation} 0.8s 0.3s
   }
 `
 
@@ -132,12 +177,12 @@ const GalleryItem = styled.div`
   &:hover {
     div {
       transition: 0.4s ease-in-out;
-      opacity: 100%;
-      background-color: rgba(178, 1, 116, 0.4);
+      background-color:${({ theme }) => theme.color.camel};
+      opacity: 0.85;
       top: 0;
       p {
         z-index: 2;
-        color: ${({ theme }) => theme.color.light};
+        color: ${({ theme }) => theme.color.night};
         font-size: 30px;
         line-height: 1rem;
         opacity: 100%;

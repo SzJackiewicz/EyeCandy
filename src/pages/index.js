@@ -1,10 +1,11 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
 import {StaticImage} from "gatsby-plugin-image";
+import { motion } from 'framer-motion';
 
 export const query = graphql`
   query {
@@ -14,7 +15,10 @@ export const query = graphql`
   }
 `;
 const IndexPage = ({ data }) => {
-  return (
+
+    const MotionButton = motion(HeroButton)
+
+    return (
     <>
       <Navigation />
       <HeroSection imageSource={data.hero.publicURL}>
@@ -24,7 +28,15 @@ const IndexPage = ({ data }) => {
         <TitleContainer>
           <HeroTitle>Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle></HeroTitle>
           <HeroDescription>Salon piękności specjalizujący się w laminacji rzęs, makijażu permanentnym i stylizacji brwi</HeroDescription>
-            <HeroButton>GALERIA</HeroButton>
+            <MotionButton
+                animate={{
+                    scale: [1, 1.01, 1],
+                    boxShadow:['rgb(194 160 138) 1px 1px 1px', 'rgb(194 160 138) 0px 1px 8px', 'rgb(194 160 138) 1px 1px 1px']
+            }}
+                transition={{ ease: "linear", duration: 2, repeat: Infinity }}
+            >
+                <p>GALERIA</p>
+            </MotionButton>
         </TitleContainer>
       </HeroSection>
       <ContentWrapper>
@@ -34,6 +46,15 @@ const IndexPage = ({ data }) => {
     </>
   );
 };
+
+const appearAnimation = keyframes`
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+`;
 
 const ContentWrapper = styled.div`
   max-width: 1440px;
@@ -106,6 +127,9 @@ const HeroTitle = styled.h1`
     background-color: ${({ theme }) => theme.color.light};
     position: absolute;
     z-index: -1;
+    transform-origin: 0 50%;
+    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97) forwards;
+    animation: ${appearAnimation} 0.8s 0.3s
   }
 `;
 
