@@ -44,7 +44,7 @@ const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: ${({ theme }) => theme.font.family.switzer};
+  font-family: ${({ theme }) => theme.font.family.playfair};
   margin: 30px auto;
   max-width: 1500px;
 `;

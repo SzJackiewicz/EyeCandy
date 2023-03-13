@@ -42,19 +42,10 @@ const query = graphql`
 
 const Gallery = () => {
   const images = useStaticQuery(query);
-  // const observer = new IntersectionObserver((entries) => {
-  //   entries.forEach((entry) => {
-  //     console.log(entry);
-  //     if (entry.isIntersecting) {
-  //       setIsHidded(false);
-  //     } else {
-  //       setIsHidded(true);
-  //     }
-  //   });
-  // });
 
   return (
     <GallerySection>
+        <GalleryTitle>Lorem ipsum dolor sit amet</GalleryTitle>
       <GalleryGridOne>
         {images &&
           images.one.edges.map((image) => {
@@ -102,8 +93,27 @@ const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  max-width: 100%;
+  padding-top: 20px;
 `;
+
+const GalleryTitle = styled.h2`
+  position: relative;
+  font-size: 36px;
+  font-family: ${({ theme }) => theme.font.family.playfair};
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  &::before {
+    content: "";
+    width: 60%;
+    height: 64px;
+    background-color: ${({ theme }) => theme.color.light};
+    position: absolute;
+    z-index: -1;
+    bottom: -21%;
+  }
+`
 
 const GalleryGridOne = styled.div`
   display: flex;
@@ -115,9 +125,9 @@ const GalleryGridThree = styled(GalleryGridOne)``;
 
 const GalleryItem = styled.div`
   position: relative;
-  margin: 10px;
-  width: 500px;
-  height: 500px;
+  margin: 20px;
+  width: 400px;
+  height: 400px;
   overflow: hidden;
   &:hover {
     div {
@@ -131,7 +141,7 @@ const GalleryItem = styled.div`
         font-size: 30px;
         line-height: 1rem;
         opacity: 100%;
-        font-family: ${({ theme }) => theme.font.family.switzer};
+        font-family: ${({ theme }) => theme.font.family.playfair};
         letter-spacing: 2px;
       }
     }
@@ -153,7 +163,7 @@ const SingleImage = styled.img`
 
 const GalleryTitleContainer = styled.div`
   position: absolute;
-  font-family: ${({ theme }) => theme.font.family.switzer};
+  font-family: ${({ theme }) => theme.font.family.playfair};
   width: 100%;
   text-align: center;
   white-space: nowrap;

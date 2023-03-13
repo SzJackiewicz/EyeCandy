@@ -1,12 +1,9 @@
-import { css } from "styled-components";
-
 export const theme = {
   color: {
-    pink: "#FF74B1",
-    darkPink: "#4C0033",
-    lightPink: "#E80F88",
+    light: "#E4DCD1",
+    night: "#1E1E1E",
     camel: "#C2a08a",
-    light: "#e4dcd1"
+    white: "#F1F1F1"
 
   },
   size: {
@@ -26,9 +23,7 @@ export const theme = {
       thumbnailSmall: "1.4rem",
     },
     family: {
-      poppins: '"Poppins", sans-serif',
-      caveat: '"Caveat", cursive',
-      switzer: '"Switzer", sans-serif',
+      playfair: " 'Playfair Display', serif"
     },
   },
   mq: {

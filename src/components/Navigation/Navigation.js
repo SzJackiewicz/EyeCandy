@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import InstagramIcon from "../../assets/icons/instagramIcon";
-import FacebookIcon from "../../assets/icons/facebookIcon";
 
 const Navigation = () => {
   return (
@@ -14,10 +12,6 @@ const Navigation = () => {
       </NavigationRoutes>
       <NavigationContact>
         <NavElement>tel: 123 123 123</NavElement>
-        <IconsContainer>
-          <InstagramIcon />
-          <FacebookIcon />
-        </IconsContainer>
       </NavigationContact>
     </NavigationWrapper>
   );
@@ -58,36 +52,16 @@ const NavElement = styled.li`
   align-items: center;
   width: 140px;
   height: 100%;
-  font-size: 22px;
-  font-weight: bolder;
-  color: ${({ theme }) => theme.color.light};
-  font-family: ${({ theme }) => theme.font.family.switzer};
+  font-size: 20px;
+  font-family: ${({ theme }) => theme.font.family.playfair};
   letter-spacing: 2px;
   cursor: pointer;
-  &:hover {
-    transition: 0.5s all ease;
-    transform: scale(1.25);
-    color: ${({ theme }) => theme.color.darkPink};
-  }
-  &:first-child {
-    color: ${({ theme }) => theme.color.darkPink};
-  }
-`;
+  color: ${({ theme }) => theme.color.night};
 
-const IconsContainer = styled.li`
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  width: 100px;
-  height: 100%;
-  z-index: 2;
-  margin: 0 20px 0 40px;
-  gap: 20px;
-  cursor: pointer;
-  & > :hover {
-    transition: 0.5s all ease;
-    transform: scale(1.25);
+  &:hover {
+    transition: 0.4s all ease;
+    transform: scale(1.1);
+    color: ${({ theme }) => theme.color.camel};
   }
 `;
 

@@ -4,17 +4,29 @@ import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
+import {StaticImage} from "gatsby-plugin-image";
 
+export const query = graphql`
+  query {
+    hero: file(relativePath: { regex: "/homepage/eyehero.png/" }) {
+      publicURL
+    }
+  }
+`;
 const IndexPage = ({ data }) => {
   return (
     <>
       <Navigation />
-      <HeroImage imageSource={data.hero.publicURL}>
+      <HeroSection imageSource={data.hero.publicURL}>
+          <HeroImageWrapper>
+            <StaticImage src='../assets/images/homepage/eyehero.png' alt='woman photo' />
+          </HeroImageWrapper>
         <TitleContainer>
-          <HeroTitle>Salon kosmetyczny</HeroTitle>
-          <HeroSubtitle><span>E</span>ye <span>C</span>andy</HeroSubtitle>
+          <HeroTitle>Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle></HeroTitle>
+          <HeroDescription>Salon piękności specjalizujący się w laminacji rzęs, makijażu permanentnym i stylizacji brwi</HeroDescription>
+            <HeroButton>GALERIA</HeroButton>
         </TitleContainer>
-      </HeroImage>
+      </HeroSection>
       <ContentWrapper>
         <Gallery />
         <Footer />
@@ -23,50 +35,46 @@ const IndexPage = ({ data }) => {
   );
 };
 
-export const query = graphql`
-  query {
-    hero: file(relativePath: { regex: "/homepage/0_hero.jpg/" }) {
-      publicURL
-    }
-  }
-`;
-
 const ContentWrapper = styled.div`
-  max-width: 1920px;
+  max-width: 1440px;
   margin: 0 auto;
   min-height: 100%;
   overflow-x: hidden;
   width: 100vw;
 `;
 
-const HeroImage = styled.div`
+const HeroSection = styled.section`
   position: relative;
+  max-width: 1440px;
   width: 100%;
-  height: 100vh;
+  margin: 0 auto;
+  min-height: 900px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-image: url("${({ imageSource }) => imageSource}");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 30%;
-  padding: 35px;
-  background-color: ${({ theme }) => theme.color.camel};
-  background-blend-mode: overlay;
+  align-items: flex-end;
 `;
+
+const HeroImageWrapper = styled.div`
+  position: absolute;
+  max-width: 600px;
+  bottom: 0;
+  left: 5%;
+`
 
 const TitleContainer = styled.div`
   position: absolute;
-  width: 480px;
+  display: flex;
+  flex-direction: column;
+  width: 540px;
   top: 42%;
-  left: 5%;
-  text-align: center;
+  right: 5%;
+  text-align: left;
   filter: none;
   z-index: 1;
   transform: translateY(10%);
   animation: slide-in-anim 1.5s ease-out forwards;
-
+  font-family: ${({ theme }) => theme.font.family.playfair};
+  gap: 10px;
   @keyframes slide-in-anim {
     0% {
       opacity: 0;
@@ -79,21 +87,58 @@ const TitleContainer = styled.div`
 `;
 
 const HeroTitle = styled.h1`
-  font-size: 50px;
-  font-family: ${({ theme }) => theme.font.family.switzer};
-  color: ${({ theme }) => theme.color.darkPink};
-  font-weight: 300;
+  position: relative;
+  display: flex;
+  font-size: 48px;
+  align-items: baseline;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 10px;
+  color: ${({ theme }) => theme.color.night};
+  font-weight: 400;
   margin: 0;
+  letter-spacing: 2px;
+  
+  &::before {
+    content: "";
+    width: 200px;
+    height: 64px;
+    background-color: ${({ theme }) => theme.color.light};
+    position: absolute;
+    z-index: -1;
+  }
 `;
 
 const HeroSubtitle = styled.h2`
-  font-family: ${({ theme }) => theme.font.family.switzer};
-  font-size: 40px;
-  font-weight: 300;
-  letter-spacing: 3px;
-  color: ${({ theme }) => theme.color.darkPink};
-  span {
-    color: ${({ theme }) => theme.color.lightPink};
-  }
+  font-size: 26px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.color.camel};
 `;
+
+const HeroDescription = styled.p`
+  text-align: left ;
+  font-size: 20px;
+  margin: 0;
+  line-height: 1.5rem;
+  width: 450px;
+`
+
+const HeroButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width:181px;
+  height:40px;
+  background-color: ${({ theme }) => theme.color.camel};
+  font-family: ${({ theme }) => theme.font.family.playfair};
+  color: ${({ theme }) => theme.color.white};
+  font-size: 20px;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-top: 10px;
+  padding-bottom: 4px;
+`
 export default IndexPage;
