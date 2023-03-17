@@ -98,6 +98,7 @@ const InfoContainer = styled.div`
   max-width: 1440px;
   justify-content: space-around;
   letter-spacing: 2px;
+  align-items: baseline;
 `;
 
 const StyledListContainer = styled.ul`
@@ -108,7 +109,7 @@ const StyledListContainer = styled.ul`
   min-height: 180px;
   margin: 30px 0 0;
   padding: 0;
-
+  gap: 15px;
   &:nth-child(2) {
     align-items: center;
   }

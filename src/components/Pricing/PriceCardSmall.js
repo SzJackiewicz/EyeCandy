@@ -3,34 +3,33 @@ import React from "react";
 import styled from "styled-components";
 import { StyledHeader } from "../StyledHeader/StyledHeader";
 
-export const PriceCardSmall = () => {
+export const PriceCardSmall = ({ data }) => {
   return (
     <SmallCardWrapper>
       <CardText>
-        <StyledHeader size="24px" title="Stylizacja brwi" bold="bold" />
+        <Title size="20px" title={data.title} bold="bold" />
         <CardPricesContainer>
-          <PriceRow>
-            <ServiceName>Koloryzacja - depilacja woskiem</ServiceName>
-            <ServicePrice>70 zł</ServicePrice>
-          </PriceRow>
-          <PriceRow>
-            <ServiceName>
-              Geomertria - koloryzacja - depilacja woskiem
-            </ServiceName>
-            <ServicePrice>90 zł</ServicePrice>
-          </PriceRow>
-          <PriceRow>
-            <ServiceName>Laminacja brwi</ServiceName>
-            <ServicePrice>130 zł</ServicePrice>
-          </PriceRow>
-          <PriceRow>
-            <ServiceName>Laminacja brwi bez koloryzacji</ServiceName>
-            <ServicePrice>110 zł</ServicePrice>
-          </PriceRow>
+          {data.prices.map((price) => (
+            <PriceRow>
+              <ServiceName>{price.name}</ServiceName>
+              <ServicePrice>{price.price}</ServicePrice>
+            </PriceRow>
+          ))}
         </CardPricesContainer>
       </CardText>
       <CardImageContainer>
-        <StaticImage src={"../../assets/images/price/1.jpeg"} />
+        {data && data.id === 1 && (
+          <StaticImage
+            src={"../../assets/images/price/1.jpeg"}
+            alt="pricing image"
+          />
+        )}
+        {data && data.id === 2 && (
+          <StaticImage
+            src={"../../assets/images/price/2.jpeg"}
+            alt="pricing image"
+          />
+        )}
       </CardImageContainer>
     </SmallCardWrapper>
   );
@@ -38,20 +37,21 @@ export const PriceCardSmall = () => {
 
 const SmallCardWrapper = styled.div`
   display: flex;
-  width: 760px;
-  border: 1px solid ${({ theme }) => theme.color.camel};
+  width: 575px;
+  box-shadow: 0px 0px 24px 0px rgba(228, 220, 209, 1);
   border-radius: 4px;
   font-family: ${({ theme }) => theme.font.family.playfair};
-  padding: 15px;
-  gap: 25px;
-  margin: 0 auto;
+  padding: 10px;
+  gap: 10px;
+  align-items: flex-start;
 `;
 
 const CardText = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 4;
   font-family: ${({ theme }) => theme.font.family.playfair};
+  padding: 8px 0 0 8px;
 `;
 
 const CardImageContainer = styled.div`
@@ -61,14 +61,11 @@ const CardImageContainer = styled.div`
   align-items: center;
   height: 100%;
   flex: 2;
-  padding: 10px;
+  filter: grayscale();
 `;
 
-const CardTitle = styled.p`
-  width: 100%;
-  color: ${({ theme }) => theme.color.night};
-  font-family: ${({ theme }) => theme.font.family.playfair};
-  font-size: 24px;
+const Title = styled(StyledHeader)`
+  margin-top: 15px;
 `;
 
 const CardPricesContainer = styled.div`
@@ -80,7 +77,10 @@ const CardPricesContainer = styled.div`
 const PriceRow = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 35px;
 `;
 
-const ServiceName = styled.p``;
+const ServiceName = styled.p`
+  width: 80%;
+`;
 const ServicePrice = styled.p``;

@@ -168,7 +168,7 @@ const HeroTitle = styled.h1`
 
   &::before {
     content: "";
-    width: 200px;
+    width: 243px;
     height: 64px;
     background-color: ${({ theme }) => theme.color.light};
     position: absolute;

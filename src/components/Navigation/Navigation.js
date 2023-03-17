@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { navigate } from "gatsby";
 
 export const query = graphql`
   query {
@@ -44,8 +45,8 @@ const Navigation = (props) => {
         </LogoWrapper>
       </NavigationRoutes>
       <NavigationContact>
-        <NavElement>galeria</NavElement>
-        <NavElement>cennik</NavElement>
+        <NavElement onClick={() => navigate(`#galeria`)}>galeria</NavElement>
+        <NavElement onClick={() => navigate(`#cennik`)}>cennik</NavElement>
         <NavElement>tel: 123123123</NavElement>{" "}
       </NavigationContact>
     </NavigationWrapper>

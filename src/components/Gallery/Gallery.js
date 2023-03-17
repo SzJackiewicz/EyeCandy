@@ -51,7 +51,7 @@ const Gallery = () => {
   const isInViewThree = useInView(refThree, { once: true });
 
   return (
-    <GallerySection id="gallery">
+    <GallerySection id="galeria">
       <GalleryTitle
         ref={ref}
         style={{
