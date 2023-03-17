@@ -64,9 +64,10 @@ const Gallery = () => {
       </GalleryTitle>
       <GalleryGridOne ref={ref}>
         {images &&
-          images.one.edges.map((image) => {
+          images.one.edges.map((image, index) => {
             return (
               <GalleryItem
+                key={index}
                 style={{
                   transform: isInView ? "none" : "translateY(200px)",
                   opacity: isInView ? 1 : 0,
@@ -83,9 +84,10 @@ const Gallery = () => {
       </GalleryGridOne>
       <GalleryGridTwo ref={refTwo}>
         {images &&
-          images.two.edges.map((image) => {
+          images.two.edges.map((image, index) => {
             return (
               <GalleryItem
+                key={index}
                 style={{
                   transform: isInViewTwo ? "none" : "translateY(200px)",
                   opacity: isInViewTwo ? 1 : 0,
@@ -102,9 +104,10 @@ const Gallery = () => {
       </GalleryGridTwo>
       <GalleryGridThree ref={refThree}>
         {images &&
-          images.three.edges.map((image) => {
+          images.three.edges.map((image, index) => {
             return (
               <GalleryItem
+                key={index}
                 style={{
                   transform: isInViewThree ? "none" : "translateY(200px)",
                   opacity: isInViewThree ? 1 : 0,

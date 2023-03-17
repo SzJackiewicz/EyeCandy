@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import InstagramIcon from "../../assets/icons/instagramIcon";
 import FacebookIcon from "../../assets/icons/facebookIcon";
 import { StyledHeader } from "../StyledHeader/StyledHeader";

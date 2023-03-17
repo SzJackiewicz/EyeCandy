@@ -22,7 +22,6 @@ export const query = graphql`
 `;
 const Navigation = (props) => {
   const data = useStaticQuery(query);
-  console.log(data);
   const { scrollYProgress } = useViewportScroll();
   const background = useTransform(
     scrollYProgress,

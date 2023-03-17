@@ -2,6 +2,7 @@ import * as React from "react";
 import { graphql, navigate } from "gatsby";
 import styled, { keyframes } from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
+import { Pricing } from "../components/Pricing/Pricing";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
 import { StaticImage } from "gatsby-plugin-image";
@@ -64,6 +65,7 @@ const IndexPage = ({ data }) => {
       </HeroSection>
       <ContentWrapper>
         <Gallery />
+        <Pricing />
         <Footer />
       </ContentWrapper>
     </>
