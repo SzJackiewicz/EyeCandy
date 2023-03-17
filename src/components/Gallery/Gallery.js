@@ -1,5 +1,5 @@
-import React, {useRef} from "react";
-import styled, {keyframes} from "styled-components";
+import React, { useRef } from "react";
+import styled, { keyframes } from "styled-components";
 import { graphql, useStaticQuery } from "gatsby";
 import { useInView } from "framer-motion";
 
@@ -43,34 +43,35 @@ const query = graphql`
 
 const Gallery = () => {
   const images = useStaticQuery(query);
-    const ref = useRef(null)
-    const isInView = useInView(ref, {once: true})
-    const refTwo = useRef(null)
-    const isInViewTwo = useInView(refTwo, {once: true})
-    const refThree = useRef(null)
-    const isInViewThree = useInView(refThree, {once: true})
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  const refTwo = useRef(null);
+  const isInViewTwo = useInView(refTwo, { once: true });
+  const refThree = useRef(null);
+  const isInViewThree = useInView(refThree, { once: true });
 
-
-    return (
+  return (
     <GallerySection id="gallery">
-        <GalleryTitle
-            ref={ref}
-            style={{
-              transform: isInView ? "none" : "translateY(200px)",
-              opacity: isInView ? 1 : 0,
-              transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-            }}
-        >Lorem ipsum dolor sit amet</GalleryTitle>
+      <GalleryTitle
+        ref={ref}
+        style={{
+          transform: isInView ? "none" : "translateY(200px)",
+          opacity: isInView ? 1 : 0,
+          transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+        }}
+      >
+        Lorem ipsum dolor sit amet
+      </GalleryTitle>
       <GalleryGridOne ref={ref}>
         {images &&
           images.one.edges.map((image) => {
             return (
               <GalleryItem
-                  style={{
-                      transform: isInView ? "none" : "translateY(200px)",
-                      opacity: isInView ? 1 : 0,
-                      transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-                  }}
+                style={{
+                  transform: isInView ? "none" : "translateY(200px)",
+                  opacity: isInView ? 1 : 0,
+                  transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                }}
               >
                 <GalleryTitleContainer>
                   <p>przedłużanie rzęs</p>
@@ -85,11 +86,11 @@ const Gallery = () => {
           images.two.edges.map((image) => {
             return (
               <GalleryItem
-                  style={{
-                      transform: isInViewTwo ? "none" : "translateY(200px)",
-                      opacity: isInViewTwo ? 1 : 0,
-                      transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-                  }}
+                style={{
+                  transform: isInViewTwo ? "none" : "translateY(200px)",
+                  opacity: isInViewTwo ? 1 : 0,
+                  transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                }}
               >
                 <GalleryTitleContainer>
                   <p>laminacja rzęs</p>
@@ -104,11 +105,11 @@ const Gallery = () => {
           images.three.edges.map((image) => {
             return (
               <GalleryItem
-                  style={{
-                    transform: isInViewThree ? "none" : "translateY(200px)",
-                    opacity: isInViewThree ? 1 : 0,
-                    transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s"
-                  }}
+                style={{
+                  transform: isInViewThree ? "none" : "translateY(200px)",
+                  opacity: isInViewThree ? 1 : 0,
+                  transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+                }}
               >
                 <GalleryTitleContainer>
                   <p>stylizacja brwi</p>
@@ -135,7 +136,7 @@ const GallerySection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 100%;
+  max-width: 1440px;
   padding-top: 20px;
 `;
 
@@ -145,6 +146,9 @@ const GalleryTitle = styled.h2`
   font-family: ${({ theme }) => theme.font.family.playfair};
   font-weight: 500;
   letter-spacing: 2px;
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 
   &::before {
     content: "";
@@ -155,29 +159,46 @@ const GalleryTitle = styled.h2`
     z-index: -1;
     bottom: -21%;
     transform-origin: 0 50%;
-    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97) forwards;
-    animation: ${appearAnimation} 0.8s 0.3s
+    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97)
+      forwards;
+    animation: ${appearAnimation} 0.8s 0.3s;
+    @media (max-width: 768px) {
+      width: 65%;
+      height: 44px;
+    }
   }
-`
+`;
 
 const GalleryGridOne = styled.div`
   display: flex;
-  height: 100%;
+  height: 400px;
+  justify-content: center;
+  max-width: 1440px;
+  @media (max-width: 1320px) {
+    flex-wrap: wrap;
+    height: fit-content;
+  }
 `;
 
 const GalleryGridTwo = styled(GalleryGridOne)``;
 const GalleryGridThree = styled(GalleryGridOne)``;
 
 const GalleryItem = styled.div`
+  box-sizing: border-box;
+  padding: 10px;
   position: relative;
-  margin: 20px;
   width: 400px;
   height: 400px;
   overflow: hidden;
+  @media (max-width: 1320px) {
+    width: 350px;
+    height: 350px;
+  }
+
   &:hover {
     div {
       transition: 0.4s ease-in-out;
-      background-color:${({ theme }) => theme.color.camel};
+      background-color: ${({ theme }) => theme.color.camel};
       opacity: 0.85;
       top: 0;
       p {
@@ -215,6 +236,7 @@ const GalleryTitleContainer = styled.div`
   z-index: 1;
   opacity: 0;
   top: -10%;
-  background-color: ${({ theme }) => theme.color.camel};`;
+  background-color: ${({ theme }) => theme.color.camel};
+`;
 
 export default Gallery;

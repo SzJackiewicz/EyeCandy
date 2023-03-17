@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
-import { theme } from "../../assets/styles/theme";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 

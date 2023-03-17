@@ -44,7 +44,7 @@ const IndexPage = ({ data }) => {
           </HeroTitle>
           <HeroDescription>
             Salon piękności specjalizujący się w laminacji rzęs, makijażu
-            permanentnym i stylizacji brwi
+            permanentnym i&nbsp;stylizacji brwi
           </HeroDescription>
           <MotionButton
             onClick={() => navigate(`#gallery`)}
@@ -96,6 +96,13 @@ const HeroSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  @media (max-width: 768px) {
+    min-height: 700px;
+  }
+  @media (max-width: 481px) {
+    min-height: 550px;
+    min-width: 375px;
+  }
 `;
 
 const HeroImageWrapper = styled.div`
@@ -103,6 +110,9 @@ const HeroImageWrapper = styled.div`
   max-width: 550px;
   bottom: 0;
   left: 5%;
+  @media (max-width: 768px) {
+    opacity: 0.7;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -119,6 +129,10 @@ const TitleContainer = styled.div`
   animation: slide-in-anim 1.5s ease-out forwards;
   font-family: ${({ theme }) => theme.font.family.playfair};
   gap: 10px;
+  @media (max-width: 768px) {
+    width: 320px;
+  }
+
   @keyframes slide-in-anim {
     0% {
       opacity: 0;
@@ -142,6 +156,13 @@ const HeroTitle = styled.h1`
   font-weight: 400;
   margin: 0;
   letter-spacing: 2px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    font-size: 42px;
+  }
+  @media (max-width: 481px) {
+    font-size: 36px;
+  }
 
   &::before {
     content: "";
@@ -154,6 +175,15 @@ const HeroTitle = styled.h1`
     animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97)
       forwards;
     animation: ${appearAnimation} 0.8s 0.3s;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      height: 54px;
+      width: 165px;
+    }
+    @media (max-width: 481px) {
+      height: 46px;
+      width: 150px;
+    }
   }
 `;
 
@@ -161,6 +191,16 @@ const HeroSubtitle = styled.h2`
   font-size: 26px;
   font-weight: 600;
   color: ${({ theme }) => theme.color.camel};
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin: 5px 0;
+    color: ${({ theme }) => theme.color.night};
+    font-style: italic;
+    font-weight: 500;
+  }
+  @media (max-width: 481px) {
+    font-size: 18px;
+  }
 `;
 
 const HeroDescription = styled.p`
@@ -169,6 +209,12 @@ const HeroDescription = styled.p`
   line-height: 1.7rem;
   width: 450px;
   margin: 10px 0;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 300px;
+    margin: 0;
+    line-height: 1.4rem;
+  }
 `;
 
 const HeroButton = styled.button`
@@ -189,5 +235,11 @@ const HeroButton = styled.button`
   margin-top: 10px;
   padding-bottom: 4px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 161px;
+    height: 30px;
+    padding-bottom: 0;
+  }
 `;
 export default IndexPage;
