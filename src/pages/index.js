@@ -1,54 +1,65 @@
 import * as React from "react";
-import {graphql, navigate} from "gatsby";
-import styled, {keyframes} from "styled-components";
+import { graphql, navigate } from "gatsby";
+import styled, { keyframes } from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import Navigation from "../components/Navigation/Navigation";
 import Footer from "../components/Footer/Footer";
-import {StaticImage} from "gatsby-plugin-image";
-import { motion } from 'framer-motion';
+import { StaticImage } from "gatsby-plugin-image";
+import { motion } from "framer-motion";
 
 export const query = graphql`
   query {
-  hero: allFile(filter: {relativePath: {regex: "/homepage/eyehero.png/"}}) {
-    nodes {
-      publicURL
-    }
-    edges {
-      node {
-        childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+    hero: allFile(
+      filter: { relativePath: { regex: "/homepage/eyehero.png/" } }
+    ) {
+      nodes {
+        publicURL
+      }
+      edges {
+        node {
+          childImageSharp {
+            gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+          }
         }
       }
     }
   }
-}
 `;
 const IndexPage = ({ data }) => {
+  const MotionButton = motion(HeroButton);
 
-    const MotionButton = motion(HeroButton)
-
-    return (
+  return (
     <>
       <Navigation />
-      <HeroSection
-          id="home"
-          imageSource={data.hero.publicURL}>
-          <HeroImageWrapper>
-            <StaticImage src='../assets/images/homepage/eyehero.png' alt='woman photo' />
-          </HeroImageWrapper>
+      <HeroSection id="home" imageSource={data.hero.publicURL}>
+        <HeroImageWrapper>
+          <StaticImage
+            src="../assets/images/homepage/eyehero.png"
+            alt="woman photo"
+          />
+        </HeroImageWrapper>
         <TitleContainer>
-          <HeroTitle>Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle></HeroTitle>
-          <HeroDescription>Salon piękności specjalizujący się w laminacji rzęs, makijażu permanentnym i stylizacji brwi</HeroDescription>
-            <MotionButton
-                onClick={() => navigate(`#gallery`)}
-                animate={{
-                    scale: [1, 1.01, 1],
-                    boxShadow:['rgb(194 160 138) 1px 1px 1px', 'rgb(194 160 138) 0px 1px 8px', 'rgb(194 160 138) 1px 1px 1px']
+          <HeroTitle>
+            Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle>
+          </HeroTitle>
+          <HeroDescription>
+            Salon piękności specjalizujący się w laminacji rzęs, makijażu
+            permanentnym i stylizacji brwi
+          </HeroDescription>
+          <MotionButton
+            onClick={() => navigate(`#gallery`)}
+            animate={{
+              scale: [1, 1.01, 1],
+              boxShadow: [
+                "rgb(194 160 138) 1px 1px 1px",
+                "rgb(194 160 138) 0px 1px 8px",
+                "rgb(194 160 138) 1px 1px 1px",
+              ],
             }}
-                transition={{ ease: "linear", duration: 2, repeat: Infinity }}
-            >
-                <p>GALERIA</p>
-            </MotionButton>
+            transition={{ ease: "linear", duration: 2, repeat: Infinity }}
+          >
+            <p>GALERIA</p>
+          </MotionButton>
         </TitleContainer>
       </HeroSection>
       <ContentWrapper>
@@ -92,7 +103,7 @@ const HeroImageWrapper = styled.div`
   max-width: 550px;
   bottom: 0;
   left: 5%;
-`
+`;
 
 const TitleContainer = styled.div`
   position: absolute;
@@ -131,7 +142,7 @@ const HeroTitle = styled.h1`
   font-weight: 400;
   margin: 0;
   letter-spacing: 2px;
-  
+
   &::before {
     content: "";
     width: 200px;
@@ -140,8 +151,9 @@ const HeroTitle = styled.h1`
     position: absolute;
     z-index: -1;
     transform-origin: 0 50%;
-    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97) forwards;
-    animation: ${appearAnimation} 0.8s 0.3s
+    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97)
+      forwards;
+    animation: ${appearAnimation} 0.8s 0.3s;
   }
 `;
 
@@ -152,20 +164,20 @@ const HeroSubtitle = styled.h2`
 `;
 
 const HeroDescription = styled.p`
-  text-align: left ;
+  text-align: left;
   font-size: 20px;
-  line-height: 1.5rem;
+  line-height: 1.7rem;
   width: 450px;
   margin: 10px 0;
-`
+`;
 
 const HeroButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width:181px;
-  height:40px;
+  width: 181px;
+  height: 40px;
   background-color: ${({ theme }) => theme.color.camel};
   font-family: ${({ theme }) => theme.font.family.playfair};
   color: ${({ theme }) => theme.color.white};
@@ -177,5 +189,5 @@ const HeroButton = styled.button`
   margin-top: 10px;
   padding-bottom: 4px;
   cursor: pointer;
-`
+`;
 export default IndexPage;
