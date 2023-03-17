@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { eyeBrowData, permanentMakeupData } from "./constans/pricesData";
+import {
+  eyeBrowData,
+  lashesData,
+  permanentMakeupData,
+} from "./constans/pricesData";
+import { PriceCardBig } from "./PriceCardBig";
 import { PriceCardSmall } from "./PriceCardSmall";
 
 export const Pricing = () => {
@@ -8,6 +13,7 @@ export const Pricing = () => {
     <PricingWrapper id="cennik">
       <PriceCardSmall data={eyeBrowData} />
       <PriceCardSmall data={permanentMakeupData} />
+      <PriceCardBig data={lashesData} />
     </PricingWrapper>
   );
 };

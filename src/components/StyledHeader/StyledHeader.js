@@ -19,9 +19,9 @@ const StyledTitle = styled.p`
     z-index: -1;
     position: absolute;
     content: "";
-    width: 100%;
+    width: 101%;
     height: 140%;
-    bottom: -10%;
+    bottom: -14%;
     background-color: ${({ theme }) => theme.color.light};
   }
 `;

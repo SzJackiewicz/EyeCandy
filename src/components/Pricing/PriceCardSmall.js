@@ -51,7 +51,7 @@ const CardText = styled.div`
   flex-direction: column;
   flex: 4;
   font-family: ${({ theme }) => theme.font.family.playfair};
-  padding: 8px 0 0 8px;
+  padding: 16px 0 0 12px;
 `;
 
 const CardImageContainer = styled.div`
@@ -60,7 +60,8 @@ const CardImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  flex: 2;
+  width: 200px;
+  margin: 3px;
   filter: grayscale();
 `;
 
@@ -77,10 +78,11 @@ const CardPricesContainer = styled.div`
 const PriceRow = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 35px;
+  align-items: center;
 `;
 
 const ServiceName = styled.p`
   width: 80%;
+  margin: 0;
 `;
 const ServicePrice = styled.p``;
