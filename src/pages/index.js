@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import {graphql, navigate} from "gatsby";
 import styled, {keyframes} from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import Navigation from "../components/Navigation/Navigation";
@@ -9,10 +9,19 @@ import { motion } from 'framer-motion';
 
 export const query = graphql`
   query {
-    hero: file(relativePath: { regex: "/homepage/eyehero.png/" }) {
+  hero: allFile(filter: {relativePath: {regex: "/homepage/eyehero.png/"}}) {
+    nodes {
       publicURL
     }
+    edges {
+      node {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
   }
+}
 `;
 const IndexPage = ({ data }) => {
 
@@ -21,7 +30,9 @@ const IndexPage = ({ data }) => {
     return (
     <>
       <Navigation />
-      <HeroSection imageSource={data.hero.publicURL}>
+      <HeroSection
+          id="home"
+          imageSource={data.hero.publicURL}>
           <HeroImageWrapper>
             <StaticImage src='../assets/images/homepage/eyehero.png' alt='woman photo' />
           </HeroImageWrapper>
@@ -29,6 +40,7 @@ const IndexPage = ({ data }) => {
           <HeroTitle>Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle></HeroTitle>
           <HeroDescription>Salon piękności specjalizujący się w laminacji rzęs, makijażu permanentnym i stylizacji brwi</HeroDescription>
             <MotionButton
+                onClick={() => navigate(`#gallery`)}
                 animate={{
                     scale: [1, 1.01, 1],
                     boxShadow:['rgb(194 160 138) 1px 1px 1px', 'rgb(194 160 138) 0px 1px 8px', 'rgb(194 160 138) 1px 1px 1px']
@@ -69,7 +81,7 @@ const HeroSection = styled.section`
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  min-height: 900px;
+  min-height: 800px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -77,7 +89,7 @@ const HeroSection = styled.section`
 
 const HeroImageWrapper = styled.div`
   position: absolute;
-  max-width: 600px;
+  max-width: 550px;
   bottom: 0;
   left: 5%;
 `
@@ -142,9 +154,9 @@ const HeroSubtitle = styled.h2`
 const HeroDescription = styled.p`
   text-align: left ;
   font-size: 20px;
-  margin: 0;
   line-height: 1.5rem;
   width: 450px;
+  margin: 10px 0;
 `
 
 const HeroButton = styled.button`
@@ -164,5 +176,6 @@ const HeroButton = styled.button`
   font-weight: 600;
   margin-top: 10px;
   padding-bottom: 4px;
+  cursor: pointer;
 `
 export default IndexPage;

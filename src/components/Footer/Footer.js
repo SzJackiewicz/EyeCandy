@@ -1,7 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import InstagramIcon from "../../assets/icons/instagramIcon";
 import FacebookIcon from "../../assets/icons/facebookIcon";
+import {StyledHeader} from "../StyledHeader/StyledHeader";
+import {navigate} from "gatsby";
+import {Logo} from "../../assets/icons/Logo";
 
 const Footer = () => {
   return (
@@ -11,23 +14,26 @@ const Footer = () => {
           <InstagramIcon />
           <FacebookIcon />
         </IconsContainer>
-        <LogoContainer>LOGO</LogoContainer>
-        <ButtonContainer>do góry</ButtonContainer>
+        <LogoContainer><Logo /></LogoContainer>
+        <ButtonContainer
+            onClick={() => navigate(`#home`)}
+        >DO GÓRY
+        </ButtonContainer>
       </SocialMediaContainer>
       <InfoContainer>
         <StyledListContainer>
-          <ListTitle>KONTAKT</ListTitle>
+          <StyledHeader  size='20px' title='KONTAKT' bold='bold'/>
           <ListElement>adres: Toruń, ul. Szewska 11</ListElement>
           <ListElement>mail: eyecandystudiourody@gmail.com</ListElement>
           <ListElement>telefon: 123 123 123</ListElement>
         </StyledListContainer>
         <StyledListContainer>
-          <ListTitle>INFORMACJE</ListTitle>
+          <StyledHeader  size='20px' title='INFORMACJE' bold='bold'/>
           <ListElement>Usługi</ListElement>
           <ListElement>Cennik</ListElement>
         </StyledListContainer>
         <StyledListContainer>
-          <ListTitle>MAPA SERWISU</ListTitle>
+          <StyledHeader  size='20px' title='MAPA SERWISU' bold='bold'/>
           <ListElement>usługi</ListElement>
           <ListElement>cennik</ListElement>
           <ListElement>kontakt</ListElement>
@@ -45,17 +51,17 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   font-family: ${({ theme }) => theme.font.family.playfair};
-  margin: 30px auto;
-  max-width: 1500px;
+  margin: 80px auto 0;
+  max-width: 1440px;
+  color: ${({ theme }) => theme.color.night};
 `;
 
 const SocialMediaContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 60px;
   width: 100%;
-  color: ${({ theme }) => theme.color.camel};
 `;
 
 const IconsContainer = styled.div`
@@ -63,48 +69,59 @@ const IconsContainer = styled.div`
   height: 70%;
   width: 130px;
   gap: 30px;
+
+  & > svg {
+    cursor: pointer;
+  }
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled.h3`
   display: flex;
-  width: 130px;
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.h3`
   display: flex;
-  width: 130px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width:140px;
+  height:30px;
+  background-color: ${({ theme }) => theme.color.camel};
+  font-family: ${({ theme }) => theme.font.family.playfair};
+  color: ${({ theme }) => theme.color.white};
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  cursor: pointer;
 `;
 
 const InfoContainer = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
   letter-spacing: 2px;
 `;
 
 const StyledListContainer = styled.ul`
   display: flex;
-  width: 355px;
+  width: 385px;
   flex-direction: column;
-  padding: 0;
-`;
-
-const ListTitle = styled.h3`
-  color: ${({ theme }) => theme.color.camel};
+  flex-grow: 1;
+  padding-left: 40px;
+  margin: 60px 40px 0;
 `;
 
 const ListElement = styled.li`
-  font-size: 18px;
+  font-size: 16px;
   list-style: none;
   margin-bottom: 15px;
-  color: ${({ theme }) => theme.color.camel};
 `;
 
 const RightsContainer = styled.div`
   display: flex;
-  width: 100%;
-  color: ${({ theme }) => theme.color.camel};
-
+  margin: 40px 0 20px auto;
 `;
 
 export default Footer;

@@ -52,7 +52,7 @@ const Gallery = () => {
 
 
     return (
-    <GallerySection >
+    <GallerySection id="gallery">
         <GalleryTitle
             ref={ref}
             style={{
