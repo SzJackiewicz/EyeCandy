@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, navigate } from "gatsby";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Gallery from "../components/Gallery/Gallery";
 import { Pricing } from "../components/Pricing/Pricing";
 import Navigation from "../components/Navigation/Navigation";
@@ -28,6 +28,14 @@ export const query = graphql`
 `;
 const IndexPage = ({ data }) => {
   const MotionButton = motion(HeroButton);
+  const [loaded, setIsLoaded] = React.useState(false);
+  React.useEffect(() => {
+    setIsLoaded((prev) => !prev);
+  }, []);
+
+  if (loaded === false) {
+    return null;
+  }
 
   return (
     <>
@@ -49,7 +57,7 @@ const IndexPage = ({ data }) => {
               permanentnym i&nbsp;stylizacji brwi
             </HeroDescription>
             <MotionButton
-              onClick={() => navigate(`#gallery`)}
+              onClick={() => navigate(`#cennik`)}
               animate={{
                 scale: [1, 1.01, 1],
                 boxShadow: [
@@ -60,7 +68,7 @@ const IndexPage = ({ data }) => {
               }}
               transition={{ ease: "linear", duration: 2, repeat: Infinity }}
             >
-              <p>GALERIA</p>
+              <p>CENNIK</p>
             </MotionButton>
           </TitleContainer>
         </HeroSection>
