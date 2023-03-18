@@ -64,6 +64,7 @@ const NavigationWrapper = styled(motion.div)`
   z-index: 2;
   @media (max-width: 768px) {
     min-width: 375px;
+    height: 50px;
   }
 `;
 
@@ -92,11 +93,13 @@ const NavigationContact = styled(NavigationRoutes)`
     gap: 30px;
     padding: 0;
     margin-right: 20px;
+    align-items: center;
+    font-size: 13px;
   }
   @media (max-width: 481px) {
-    gap: 12px;
-    padding: 0;
-    margin-right: 10px;
+    gap: 14px;
+    padding: 0 0 8px;
+    margin-right: 15px;
   }
 `;
 
@@ -119,7 +122,7 @@ const NavElement = styled.li`
   align-items: center;
   height: 100%;
   font-size: 18px;
-  font-family:"Playfair Display", serif;
+  font-family: "Playfair Display", serif;
   letter-spacing: 2px;
   cursor: pointer;
   color: ${({ theme }) => theme.color.night};

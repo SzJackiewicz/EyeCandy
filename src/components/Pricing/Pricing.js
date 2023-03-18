@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
+import { useInView } from "framer-motion";
 import {
   eyeBrowData,
   lashesData,
@@ -12,8 +13,18 @@ import FacebookIcon from "../../assets/icons/facebookIcon";
 import { Logo } from "../../assets/icons/Logo";
 
 export const Pricing = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <PricingWrapper id="cennik">
+    <PricingWrapper
+      id="cennik"
+      ref={ref}
+      style={{
+        transform: isInView ? "none" : "translateY(200px)",
+        opacity: isInView ? 1 : 0,
+        transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
+      }}
+    >
       <SmallConainer>
         <PriceCardSmall data={eyeBrowData} />
         <PriceCardSmall data={permanentMakeupData} />

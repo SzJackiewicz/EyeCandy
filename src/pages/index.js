@@ -19,7 +19,7 @@ export const query = graphql`
       edges {
         node {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+            gatsbyImageData(placeholder: NONE, formats: WEBP)
           }
         }
       }
@@ -32,37 +32,39 @@ const IndexPage = ({ data }) => {
   return (
     <>
       <Navigation />
-      <HeroSection id="home" imageSource={data.hero.publicURL}>
-        <HeroImageWrapper>
-          <StaticImage
-            src="../assets/images/homepage/eyehero.png"
-            alt="woman photo"
-          />
-        </HeroImageWrapper>
-        <TitleContainer>
-          <HeroTitle>
-            Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle>
-          </HeroTitle>
-          <HeroDescription>
-            Salon piękności specjalizujący się w laminacji rzęs, makijażu
-            permanentnym i&nbsp;stylizacji brwi
-          </HeroDescription>
-          <MotionButton
-            onClick={() => navigate(`#gallery`)}
-            animate={{
-              scale: [1, 1.01, 1],
-              boxShadow: [
-                "rgb(194 160 138) 1px 1px 1px",
-                "rgb(194 160 138) 0px 1px 8px",
-                "rgb(194 160 138) 1px 1px 1px",
-              ],
-            }}
-            transition={{ ease: "linear", duration: 2, repeat: Infinity }}
-          >
-            <p>GALERIA</p>
-          </MotionButton>
-        </TitleContainer>
-      </HeroSection>
+      {data && (
+        <HeroSection id="home" imageSource={data.hero.publicURL}>
+          <HeroImageWrapper>
+            <StaticImage
+              src="../assets/images/homepage/eyehero.png"
+              alt="woman photo"
+            />
+          </HeroImageWrapper>
+          <TitleContainer>
+            <HeroTitle>
+              Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle>
+            </HeroTitle>
+            <HeroDescription>
+              Salon piękności specjalizujący się w laminacji rzęs, makijażu
+              permanentnym i&nbsp;stylizacji brwi
+            </HeroDescription>
+            <MotionButton
+              onClick={() => navigate(`#gallery`)}
+              animate={{
+                scale: [1, 1.01, 1],
+                boxShadow: [
+                  "rgb(194 160 138) 1px 1px 1px",
+                  "rgb(194 160 138) 0px 1px 8px",
+                  "rgb(194 160 138) 1px 1px 1px",
+                ],
+              }}
+              transition={{ ease: "linear", duration: 2, repeat: Infinity }}
+            >
+              <p>GALERIA</p>
+            </MotionButton>
+          </TitleContainer>
+        </HeroSection>
+      )}
       <ContentWrapper>
         <Gallery />
         <Pricing />
@@ -121,7 +123,6 @@ const TitleContainer = styled.div`
   transform: translateY(10%);
   animation: slide-in-anim 1.5s ease-out forwards;
   font-family: "Playfair Display", serif;
-;
   gap: 10px;
   @media (max-width: 768px) {
     width: 320px;
@@ -215,8 +216,7 @@ const HeroButton = styled.button`
   width: 181px;
   height: 40px;
   background-color: ${({ theme }) => theme.color.camel};
-  font-family:"Playfair Display", serif;
-;
+  font-family: "Playfair Display", serif;
   color: ${({ theme }) => theme.color.white};
   font-size: 20px;
   border: none;

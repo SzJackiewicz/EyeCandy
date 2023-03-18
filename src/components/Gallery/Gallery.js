@@ -60,7 +60,7 @@ const Gallery = () => {
           transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
         }}
       >
-        Lorem ipsum dolor sit amet
+        Przyjemność dla oczu i duszy
       </GalleryTitle>
       <GalleryGridOne ref={ref}>
         {images &&
@@ -202,7 +202,7 @@ const GalleryItem = styled.div`
   &:hover {
     div {
       transition: 0.4s ease-in-out;
-      background-color: ${({ theme }) => theme.color.camel};
+      background-color: ${({ theme }) => theme.color.light};
       opacity: 0.85;
       top: 10px;
       p {

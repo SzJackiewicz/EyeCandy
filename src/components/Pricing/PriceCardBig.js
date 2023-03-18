@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { StyledHeader } from "../StyledHeader/StyledHeader";
+import { StaticImage } from "gatsby-plugin-image";
 
 export const PriceCardBig = ({ data }) => {
   return (
@@ -19,14 +20,13 @@ export const PriceCardBig = ({ data }) => {
           ))}
         </PriceBigColumnLeft>
         <PriceBigColumnRight>
-          <ColumnTitle>{data.subTitleSecond}</ColumnTitle>
-          {data.pricesTwo.map((price) => (
-            <ColumnRow>
-              <ServicePrice>{price.price}</ServicePrice>
-            </ColumnRow>
-          ))}
+          <StaticImage
+            src={"../../assets/images/price/2.jpeg"}
+            alt="pricing image"
+          />
         </PriceBigColumnRight>
       </ColumnWrapper>
+      <StyledStar>*powyzej 4 tygodni cena jak za nowy set</StyledStar>
     </PriceCardBigWrapper>
   );
 };
@@ -35,7 +35,7 @@ const PriceCardBigWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 530px;
-  height: 340px;
+  height: 330px;
   box-shadow: 0px 0px 24px 0px rgba(228, 220, 209, 1);
   border-radius: 4px;
   font-family: ${({ theme }) => theme.font.family.playfair};
@@ -44,7 +44,7 @@ const PriceCardBigWrapper = styled.div`
     width: 355px;
     justify-content: center;
     align-items: center;
-    height: 560px;
+    height: 600px;
     padding-top: 10px;
   }
 `;
@@ -57,9 +57,10 @@ const PriceBigTitle = styled.p`
 `;
 const ColumnWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  align-items: center;
   width: 100%;
   height: 100%;
+  padding: 10px;
   @media (max-width: 540px) {
     flex-direction: column;
     align-items: center;
@@ -67,9 +68,10 @@ const ColumnWrapper = styled.div`
 `;
 const PriceBigColumnLeft = styled.div`
   display: flex;
+  box-sizing: content-box;
   flex-direction: column;
-  width: 50%;
-  padding: 20px;
+  width: 58%;
+  padding-left: 15px;
   @media (max-width: 540px) {
     width: 80%;
     padding: 0 20px;
@@ -77,21 +79,34 @@ const PriceBigColumnLeft = styled.div`
 `;
 
 const PriceBigColumnRight = styled(PriceBigColumnLeft)`
-  align-items: center;
+  width: 42%;
+  filter: grayscale();
+  @media (max-width: 540px) {
+    width: 80%;
+    padding: 10px 0 0;
+  }
 `;
 
 const ColumnTitle = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 15px;
 `;
 
 const ColumnRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 38px;
+  height: 32px;
+`;
+
+const StyledStar = styled.p`
+  font-size: 12px;
+  color: ${({ theme }) => theme.color.camel};
+  margin: 0 0 5px 15px;
 `;
 
 const ServiceName = styled.p``;
