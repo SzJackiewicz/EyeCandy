@@ -1,6 +1,12 @@
 import styled from "styled-components";
-import React from "react";
-export const StyledHeader = ({ title, size, bold }) => {
+import * as React from "react";
+
+type Props = {
+    title?: string;
+    size: string;
+    bold: string;
+}
+export const StyledHeader = ({ title, size, bold }: Props) => {
   return (
     <StyledTitle size={size} bold={bold}>
       {title}
@@ -8,7 +14,7 @@ export const StyledHeader = ({ title, size, bold }) => {
   );
 };
 
-const StyledTitle = styled.p`
+const StyledTitle = styled.p<Props>`
   position: relative;
   width: fit-content;
   font-family: ${({ theme }) => theme.font.family.playfair};

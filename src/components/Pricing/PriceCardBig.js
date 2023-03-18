@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { StyledHeader } from "../StyledHeader/StyledHeader";
 
 export const PriceCardBig = ({ data }) => {
-  console.log(data);
   return (
     <PriceCardBigWrapper>
       <PriceBigTitle>
@@ -35,13 +34,21 @@ export const PriceCardBig = ({ data }) => {
 const PriceCardBigWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 580px;
-  height: 345px;
+  width: 530px;
+  height: 340px;
   box-shadow: 0px 0px 24px 0px rgba(228, 220, 209, 1);
   border-radius: 4px;
   font-family: ${({ theme }) => theme.font.family.playfair};
   padding: 5px;
+  @media (max-width: 540px) {
+    width: 355px;
+    justify-content: center;
+    align-items: center;
+    height: 560px;
+    padding-top: 10px;
+  }
 `;
+
 const PriceBigTitle = styled.p`
   display: flex;
   align-items: center;
@@ -52,13 +59,21 @@ const ColumnWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100%;
-  height: 20px;
+  height: 100%;
+  @media (max-width: 540px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const PriceBigColumnLeft = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-  padding: 0 15px;
+  padding: 20px;
+  @media (max-width: 540px) {
+    width: 80%;
+    padding: 0 20px;
+  }
 `;
 
 const PriceBigColumnRight = styled(PriceBigColumnLeft)`
@@ -76,7 +91,7 @@ const ColumnRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
+  height: 38px;
 `;
 
 const ServiceName = styled.p``;

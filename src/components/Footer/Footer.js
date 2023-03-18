@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import InstagramIcon from "../../assets/icons/instagramIcon";
-import FacebookIcon from "../../assets/icons/facebookIcon";
 import { StyledHeader } from "../StyledHeader/StyledHeader";
 import { navigate } from "gatsby";
-import { Logo } from "../../assets/icons/Logo";
 
 const Footer = () => {
   return (
@@ -21,19 +18,8 @@ const Footer = () => {
         </StyledListContainer>
         <StyledListContainer>
           <StyledHeader size="20px" title="INFORMACJE" bold="bold" />
-          <ListElement>Usługi</ListElement>
-          <ListElement>Cennik</ListElement>
-        </StyledListContainer>
-        <StyledListContainer>
-          <SocialMediaContainer>
-            <IconsContainer>
-              <InstagramIcon />
-              <FacebookIcon />
-            </IconsContainer>
-            <LogoContainer>
-              <Logo />
-            </LogoContainer>
-          </SocialMediaContainer>
+          <ListElement onClick={() => navigate(`#galeria`)}>Usługi</ListElement>
+          <ListElement onClick={() => navigate(`#cennik`)}>Cennik</ListElement>
         </StyledListContainer>
       </InfoContainer>
       <RightsContainer>
@@ -51,28 +37,9 @@ const FooterContainer = styled.footer`
   margin: 80px auto 0;
   max-width: 1440px;
   color: ${({ theme }) => theme.color.night};
-`;
-
-const SocialMediaContainer = styled.div`
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-`;
-
-const IconsContainer = styled.div`
-  display: flex;
-  height: 70%;
-  width: 130px;
-  gap: 30px;
-  & > svg {
-    cursor: pointer;
+  @media (max-width: 768px) {
+    gap: 20px;
   }
-`;
-
-const LogoContainer = styled.h3`
-  display: flex;
 `;
 
 const ButtonContainer = styled.h3`
@@ -99,6 +66,15 @@ const InfoContainer = styled.div`
   justify-content: space-around;
   letter-spacing: 2px;
   align-items: baseline;
+  gap: 100px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 100%;
+    gap: 0;
+  }
 `;
 
 const StyledListContainer = styled.ul`
@@ -113,17 +89,34 @@ const StyledListContainer = styled.ul`
   &:nth-child(2) {
     align-items: center;
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 const ListElement = styled.li`
   font-size: 16px;
   list-style: none;
   margin-bottom: 15px;
+  cursor: pointer;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const RightsContainer = styled.div`
   display: flex;
-  margin: 40px 0 20px auto;
+  font-size: 10px;
+  margin: 40px auto 20px;
+  @media (max-width: 768px) {
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 20px;
+  }
 `;
 
 export default Footer;
