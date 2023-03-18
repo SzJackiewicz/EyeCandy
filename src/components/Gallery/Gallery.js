@@ -155,18 +155,19 @@ const GalleryTitle = styled.h2`
 
   &::before {
     content: "";
-    width: 60%;
+    width: 102%;
     height: 64px;
     background-color: ${({ theme }) => theme.color.light};
     position: absolute;
     z-index: -1;
-    bottom: -21%;
+    bottom: -24%;
+    left: -1%;
     transform-origin: 0 50%;
     animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97)
       forwards;
     animation: ${appearAnimation} 0.8s 0.3s;
     @media (max-width: 768px) {
-      width: 65%;
+      width: 102%;
       height: 44px;
     }
   }
@@ -203,7 +204,7 @@ const GalleryItem = styled.div`
       transition: 0.4s ease-in-out;
       background-color: ${({ theme }) => theme.color.camel};
       opacity: 0.85;
-      top: 0;
+      top: 10px;
       p {
         z-index: 2;
         color: ${({ theme }) => theme.color.night};
@@ -233,7 +234,7 @@ const SingleImage = styled.img`
 const GalleryTitleContainer = styled.div`
   position: absolute;
   font-family: ${({ theme }) => theme.font.family.playfair};
-  width: 100%;
+  width: 95%;
   text-align: center;
   white-space: nowrap;
   z-index: 1;

@@ -62,7 +62,6 @@ const NavigationWrapper = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   z-index: 2;
-  background-color: aliceblue;
   @media (max-width: 768px) {
     min-width: 375px;
   }
@@ -120,7 +119,7 @@ const NavElement = styled.li`
   align-items: center;
   height: 100%;
   font-size: 18px;
-  font-family: ${({ theme }) => theme.font.family.playfair};
+  font-family:"Playfair Display", serif;
   letter-spacing: 2px;
   cursor: pointer;
   color: ${({ theme }) => theme.color.night};

@@ -72,15 +72,6 @@ const IndexPage = ({ data }) => {
   );
 };
 
-const appearAnimation = keyframes`
-  0% {
-    transform: scaleX(0);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-`;
-
 const ContentWrapper = styled.div`
   max-width: 1440px;
   margin: 0 auto;
@@ -129,7 +120,8 @@ const TitleContainer = styled.div`
   z-index: 1;
   transform: translateY(10%);
   animation: slide-in-anim 1.5s ease-out forwards;
-  font-family: ${({ theme }) => theme.font.family.playfair};
+  font-family: "Playfair Display", serif;
+;
   gap: 10px;
   @media (max-width: 768px) {
     width: 320px;
@@ -173,18 +165,14 @@ const HeroTitle = styled.h1`
     background-color: ${({ theme }) => theme.color.light};
     position: absolute;
     z-index: -1;
-    transform-origin: 0 50%;
-    animation: ${appearAnimation} 0.8s 0.3s cubic-bezier(0.47, 0.46, 0.28, 0.97)
-      forwards;
-    animation: ${appearAnimation} 0.8s 0.3s;
     @media (max-width: 768px) {
       flex-direction: column;
       height: 54px;
-      width: 165px;
+      width: 243px;
     }
     @media (max-width: 481px) {
       height: 46px;
-      width: 150px;
+      width: 190px;
     }
   }
 `;
@@ -227,7 +215,8 @@ const HeroButton = styled.button`
   width: 181px;
   height: 40px;
   background-color: ${({ theme }) => theme.color.camel};
-  font-family: ${({ theme }) => theme.font.family.playfair};
+  font-family:"Playfair Display", serif;
+;
   color: ${({ theme }) => theme.color.white};
   font-size: 20px;
   border: none;
