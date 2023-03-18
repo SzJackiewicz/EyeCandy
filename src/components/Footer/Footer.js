@@ -14,7 +14,7 @@ const Footer = () => {
           <StyledHeader size="20px" title="KONTAKT" bold="bold" />
           <ListElement>adres: Toruń, ul. Szewska 11</ListElement>
           <ListElement>mail: eyecandystudiourody@gmail.com</ListElement>
-          <ListElement>telefon: 123 123 123</ListElement>
+          <ListElement>telefon: 605 932 271</ListElement>
         </StyledListContainer>
         <StyledListContainer>
           <StyledHeader size="20px" title="INFORMACJE" bold="bold" />

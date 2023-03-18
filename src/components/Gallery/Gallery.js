@@ -241,6 +241,9 @@ const GalleryTitleContainer = styled.div`
   opacity: 0;
   top: -10%;
   background-color: ${({ theme }) => theme.color.camel};
+  @media (max-width: 768px) {
+    width: 94%;
+  }
 `;
 
 export default Gallery;

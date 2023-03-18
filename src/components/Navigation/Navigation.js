@@ -47,7 +47,7 @@ const Navigation = (props) => {
       <NavigationContact>
         <NavElement onClick={() => navigate(`#galeria`)}>galeria</NavElement>
         <NavElement onClick={() => navigate(`#cennik`)}>cennik</NavElement>
-        <NavElement>tel: 123123123</NavElement>{" "}
+        <NavElement>tel: 605 932 271</NavElement>{" "}
       </NavigationContact>
     </NavigationWrapper>
   );
