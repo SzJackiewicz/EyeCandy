@@ -1,8 +1,8 @@
 export const eyeBrowData = {
   title: "Stylizacja brwi",
   prices: [
-    { name: "Koloryzacja - depilacja woskiem", price: "70 zł" },
-    { name: "Geomertria - koloryzacja - depilacja woskiem", price: "90 zł" },
+    { name: "Koloryzacja + depilacja woskiem", price: "70 zł" },
+    { name: "Geomertria + koloryzacja + depilacja woskiem", price: "90 zł" },
     { name: "Laminacja brwi", price: "130 zł" },
     { name: "Laminacja brwi bez koloryzacji", price: "110 zł" },
   ],
