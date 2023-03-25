@@ -53,8 +53,8 @@ const IndexPage = ({ data }) => {
               Eye Candy <HeroSubtitle>by Karolina Woźniak</HeroSubtitle>
             </HeroTitle>
             <HeroDescription>
-              Salon piękności specjalizujący się w laminacji rzęs, makijażu
-              permanentnym i&nbsp;stylizacji brwi
+              Salon piękności specjalizujący się w stylizacji rzęs i&nbsp;brwi
+              oraz makijażu permanentnym
             </HeroDescription>
             <MotionButton
               onClick={() => navigate(`#cennik`)}

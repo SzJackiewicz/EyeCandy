@@ -46,6 +46,23 @@ export const Pricing = () => {
               <InstagramIcon />
             </InstagramIconContainer>
           </IconsContainer>
+          <StyledSocialInfo>
+            znajdziesz mnie również na
+            <br />
+            <a
+              href="https://www.facebook.com/eyecandystylizacjarzes"
+              target="blank"
+            >
+              facebooku&nbsp;
+            </a>
+            i
+            <a
+              href="https://www.instagram.com/eyecandy_karolinawozniak"
+              target="blank"
+            >
+              &nbsp;instagramie
+            </a>
+          </StyledSocialInfo>
           <LogoContainer>
             <Logo />
           </LogoContainer>
@@ -97,6 +114,19 @@ const FacebookIconContainer = styled.a`
   align-items: center;
   width: 130px;
   height: 50px;
+`;
+
+const StyledSocialInfo = styled.div`
+  font-size: 16px;
+  margin: 10px 0 20px;
+  text-align: center;
+  line-height: 1.4rem;
+  letter-spacing: 0.1em;
+  a {
+    text-decoration: none;
+    margin: 0 3px;
+    color: ${({ theme }) => theme.color.camel};
+  }
 `;
 
 const InstagramIconContainer = styled(FacebookIconContainer)``;
