@@ -46,12 +46,12 @@ const SmallCardWrapper = styled.div`
   gap: 10px;
   align-items: flex-start;
   @media (max-width: 540px) {
-      box-sizing: border-box;
-      flex-direction: column;
-      align-items: center;
-      width: 355px;
-      min-width: 355px;
-    }
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    width: 355px;
+    min-width: 355px;
+  }
 `;
 
 const CardText = styled.div`
@@ -61,9 +61,9 @@ const CardText = styled.div`
   font-family: ${({ theme }) => theme.font.family.playfair};
   padding: 16px 0 0 12px;
   @media (max-width: 540px) {
-      width: 100%;
-      padding: 20px;
-    }
+    width: 100%;
+    padding: 20px;
+  }
 `;
 
 const CardImageContainer = styled.div`
@@ -76,8 +76,8 @@ const CardImageContainer = styled.div`
   margin: 3px;
   filter: grayscale();
   @media (max-width: 540px) {
-      width: 310px;
-    }
+    width: 310px;
+  }
 `;
 
 const Title = styled(StyledHeader)`
@@ -89,8 +89,8 @@ const CardPricesContainer = styled.div`
   flex-direction: column;
   width: 100%;
   @media (max-width: 540px) {
-      margin-top: 10px;
-    }
+    margin-top: 10px;
+  }
 `;
 
 const PriceRow = styled.div`
@@ -98,9 +98,9 @@ const PriceRow = styled.div`
   justify-content: space-between;
   align-items: center;
   @media (max-width: 768px) {
-      font-size: 14px;
-      width: 100%;
-    }
+    font-size: 14px;
+    width: 100%;
+  }
 `;
 
 const ServiceName = styled.p`
