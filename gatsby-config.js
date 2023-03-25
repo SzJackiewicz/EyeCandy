@@ -6,13 +6,23 @@ const path = require("path");
 module.exports = {
   siteMetadata: {
     title: `EyeCandy`,
+    description: `Stylizacja brwi, oczu i makija permanentny`,
+    author: `Karilina Woźniak`,
     siteUrl: `https://www.yourdomain.tld`,
+    keywords: "brwi, stylizacja, makijaż, permanentny, oczu,",
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        icon: "./src/assets/icons/favicon.png",
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -32,7 +42,10 @@ module.exports = {
       resolve: `gatsby-omni-font-loader`,
       options: {
         enableListener: true,
-        preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
+        preconnect: [
+          `https://fonts.googleapis.com`,
+          `https://fonts.gstatic.com`,
+        ],
         web: [
           {
             name: `Playfair Display`,
