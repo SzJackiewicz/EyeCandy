@@ -44,7 +44,7 @@ const PriceCardBigWrapper = styled.div`
     width: 355px;
     justify-content: center;
     align-items: center;
-    height: 600px;
+    height: 620px;
     padding-top: 10px;
   }
 `;
@@ -73,8 +73,8 @@ const PriceBigColumnLeft = styled.div`
   width: 58%;
   padding-left: 15px;
   @media (max-width: 540px) {
-    width: 80%;
-    padding: 0 20px;
+    width: 90%;
+    padding: 0;
   }
 `;
 
@@ -82,7 +82,7 @@ const PriceBigColumnRight = styled(PriceBigColumnLeft)`
   width: 42%;
   filter: grayscale();
   @media (max-width: 540px) {
-    width: 80%;
+    width: 90%;
     padding: 10px 0 0;
   }
 `;
@@ -107,6 +107,9 @@ const StyledStar = styled.p`
   font-size: 12px;
   color: ${({ theme }) => theme.color.camel};
   margin: 0 0 5px 15px;
+  @media (max-width: 540px) {
+    margin: 0 auto 5px;
+  }
 `;
 
 const ServiceName = styled.p``;

@@ -39,6 +39,7 @@ const FooterContainer = styled.footer`
   color: ${({ theme }) => theme.color.night};
   @media (max-width: 768px) {
     gap: 20px;
+    margin: 50px auto 0;
   }
 `;
 

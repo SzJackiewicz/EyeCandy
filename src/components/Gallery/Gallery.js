@@ -150,7 +150,7 @@ const GalleryTitle = styled.h2`
   font-weight: 500;
   letter-spacing: 2px;
   @media (max-width: 768px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   &::before {
@@ -224,7 +224,7 @@ const SingleImage = styled.img`
   filter: grayscale();
   cursor: pointer;
   transition: 0.3s ease-in-out;
-  border-radius: 3px;
+  border-radius: 10px;
   &:hover {
     filter: grayscale(0);
     transition: 0.3s ease-in-out;
@@ -242,7 +242,8 @@ const GalleryTitleContainer = styled.div`
   top: -10%;
   background-color: ${({ theme }) => theme.color.camel};
   @media (max-width: 768px) {
-    width: 94%;
+    border-radius: 10px 10px 0 0;
+    width: 330px;
   }
 `;
 
