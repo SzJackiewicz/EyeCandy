@@ -26,7 +26,7 @@ export const PriceCardSmall = ({ data }) => {
         )}
         {data && data.id === 2 && (
           <StaticImage
-            src={"../../assets/images/price/2.jpeg"}
+            src={"../../assets/images/price/3.jpeg"}
             alt="pricing image"
           />
         )}
@@ -74,7 +74,6 @@ const CardImageContainer = styled.div`
   height: 100%;
   width: 200px;
   margin: 3px;
-  filter: grayscale();
   @media (max-width: 540px) {
     width: 310px;
   }

@@ -80,7 +80,6 @@ const PriceBigColumnLeft = styled.div`
 
 const PriceBigColumnRight = styled(PriceBigColumnLeft)`
   width: 42%;
-  filter: grayscale();
   @media (max-width: 540px) {
     width: 90%;
     padding: 10px 0 0;
@@ -112,6 +111,10 @@ const StyledStar = styled.p`
   }
 `;
 
-const ServiceName = styled.p``;
+const ServiceName = styled.p`
+  font-size: 14px;
+`;
 
-const ServicePrice = styled.p``;
+const ServicePrice = styled.p`
+  font-size: 14px;
+`;

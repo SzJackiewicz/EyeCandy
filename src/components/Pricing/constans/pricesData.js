@@ -16,7 +16,7 @@ export const permanentMakeupData = {
     { name: "Makijaż permanentny brwi", price: "650 zł" },
     { name: "dopigmentowanie do 12 tygodni", price: "150 zł" },
   ],
-  image: "2.jpeg",
+  image: "3.jpeg",
   id: 2,
 };
 

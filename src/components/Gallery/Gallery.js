@@ -5,8 +5,8 @@ import { useInView } from "framer-motion";
 
 const query = graphql`
   query MyQuery {
-    one: allFile(
-      filter: { absolutePath: { regex: "assets/images/galleryOne/" } }
+    mobileOne: allFile(
+      filter: { absolutePath: { regex: "assets/images/galleryMobileOne/" } }
       sort: { name: ASC }
     ) {
       edges {
@@ -16,19 +16,8 @@ const query = graphql`
         }
       }
     }
-    two: allFile(
-      filter: { absolutePath: { regex: "assets/images/galleryTwo/" } }
-      sort: { name: ASC }
-    ) {
-      edges {
-        node {
-          publicURL
-          id
-        }
-      }
-    }
-    three: allFile(
-      filter: { absolutePath: { regex: "assets/images/galleryThree/" } }
+    mobileTwo: allFile(
+      filter: { absolutePath: { regex: "assets/images/galleryMobileTwo/" } }
       sort: { name: ASC }
     ) {
       edges {
@@ -47,8 +36,6 @@ const Gallery = () => {
   const isInView = useInView(ref, { once: true });
   const refTwo = useRef(null);
   const isInViewTwo = useInView(refTwo, { once: true });
-  const refThree = useRef(null);
-  const isInViewThree = useInView(refThree, { once: true });
 
   return (
     <GallerySection id="galeria">
@@ -64,7 +51,7 @@ const Gallery = () => {
       </GalleryTitle>
       <GalleryGridOne ref={ref}>
         {images &&
-          images.one.edges.map((image, index) => {
+          images.mobileOne.edges.map((image, index) => {
             return (
               <GalleryItem
                 key={index}
@@ -75,7 +62,9 @@ const Gallery = () => {
                 }}
               >
                 <GalleryTitleContainer>
-                  <p>przedłużanie rzęs</p>
+                  {index === 0 && <p>Stylizacja rzęs</p>}
+                  {index === 1 && <p>Lifting rzęs</p>}
+                  {index === 2 && <p>Stylizacja brwi</p>}
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
@@ -84,7 +73,7 @@ const Gallery = () => {
       </GalleryGridOne>
       <GalleryGridTwo ref={refTwo}>
         {images &&
-          images.two.edges.map((image, index) => {
+          images.mobileTwo.edges.map((image, index) => {
             return (
               <GalleryItem
                 key={index}
@@ -95,33 +84,15 @@ const Gallery = () => {
                 }}
               >
                 <GalleryTitleContainer>
-                  <p>laminacja rzęs</p>
+                  {index === 0 && <p>Stylizacja rzęs i brwi</p>}
+                  {index === 1 && <p>Makijaż permanentny</p>}
+                  {index === 2 && <p>Stylizacja rzęs</p>}
                 </GalleryTitleContainer>
                 <SingleImage key={image.node.id} src={image.node.publicURL} />
               </GalleryItem>
             );
           })}
       </GalleryGridTwo>
-      <GalleryGridThree ref={refThree}>
-        {images &&
-          images.three.edges.map((image, index) => {
-            return (
-              <GalleryItem
-                key={index}
-                style={{
-                  transform: isInViewThree ? "none" : "translateY(200px)",
-                  opacity: isInViewThree ? 1 : 0,
-                  transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s",
-                }}
-              >
-                <GalleryTitleContainer>
-                  <p>stylizacja brwi</p>
-                </GalleryTitleContainer>
-                <SingleImage key={image.node.id} src={image.node.publicURL} />
-              </GalleryItem>
-            );
-          })}
-      </GalleryGridThree>
     </GallerySection>
   );
 };
@@ -185,7 +156,6 @@ const GalleryGridOne = styled.div`
 `;
 
 const GalleryGridTwo = styled(GalleryGridOne)``;
-const GalleryGridThree = styled(GalleryGridOne)``;
 
 const GalleryItem = styled.div`
   box-sizing: border-box;
@@ -240,9 +210,9 @@ const GalleryTitleContainer = styled.div`
   z-index: 1;
   opacity: 0;
   top: -10%;
+  border-radius: 10px 10px 0 0;
   background-color: ${({ theme }) => theme.color.camel};
   @media (max-width: 768px) {
-    border-radius: 10px 10px 0 0;
     width: 330px;
   }
 `;

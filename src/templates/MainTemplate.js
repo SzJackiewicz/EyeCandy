@@ -4,13 +4,13 @@ import { ThemeProvider } from "styled-components";
 import "assets/styles/normalize.css";
 import { GlobalStyles } from "../assets/styles/GlobalStyles";
 import { theme } from "../assets/styles/theme";
-import { SEO } from "../components/SEO/SEO";
+import { Seo } from "../components/SEO/Seo";
 
 export const MainTemplate = ({ children }) => (
   <>
     <GlobalStyles />
     <ThemeProvider theme={theme}>
-      <SEO />
+      <Seo />
       <main>{children}</main>
     </ThemeProvider>
   </>
